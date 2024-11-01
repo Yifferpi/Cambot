@@ -6,11 +6,24 @@ from telegram.ext import Filters
 from telegram import BotCommand
 from picamera import PiCamera
 from time import sleep
+import os
 import logging
 
-TOKEN="***REMOVED***"
-USERS=["***REMOVED***", "***REMOVED***"]
-PATH="***REMOVED***/"
+# Load environment variables
+if "TOKEN" not in os.environ:
+        print("Please set the TOKEN environment variable.")
+        exit(1)
+TOKEN = os.getenv('TOKEN')
+if "USERS" not in os.environ:
+        print("No users specified. You might want to limit who can use this bot.")
+        USERS = []
+else:
+        USERS = [user.strip() for user in os.getenv('USERS').split(',')]
+        print("Loaded users: " + str(USERS))
+if "IMAGE_PATH" not in os.environ:
+        print("Please set the IMAGE_PATH environment variable.")
+        exit(1)
+PATH = os.getenv('IMAGE_PATH')
 
 camera = PiCamera()
 camera.resolution = (1024, 768)
@@ -43,7 +56,7 @@ def pic(update, context):
 start_handler = CommandHandler('about', about)
 pic_handler = CommandHandler('pic', pic, Filters.user(username=USERS))
 commands = [ \
-        BotCommand('about', "Just a test command"), \
+        BotCommand('about', "Tell me about you."), \
         BotCommand('pic', "Take a picture")]
 
 dispatcher.add_handler(start_handler)
