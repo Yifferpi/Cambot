@@ -2,7 +2,6 @@
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-## Description
 This project is a Telegram bot running on a Raspberry Pi, equipped with a Pi Camera to capture images. Users can interact with the bot through Telegram to control the camera remotely. A wrapper script, `run.sh`, loads secrets from a `.env` file and initiates the bot.
 
 
@@ -11,7 +10,6 @@ This project is a Telegram bot running on a Raspberry Pi, equipped with a Pi Cam
 - [Usage](#usage)
 - [Features](#features)
 - [Configuration](#configuration)
-- [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
